@@ -2,12 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Assistant from "./pages/Assistant";
 import Chatroom from "./pages/Chatroom";
+import GlobalChat from "./pages/GlobalChat"; // ✅ New import
+// import Summarize from "./pages/Summarize"; // ✅ Uncomment if implemented
+// import Settings from "./pages/Settings"; // ✅ Uncomment if implemented
 import React from "react";
-// Placeholder pages
-// const Assistant = () => <div className="p-6">Assistant Page</div>;
-// const Chatroom = () => <div className="p-6">Chatroom Page</div>;
-// const Summarize = () => <div className="p-6">Summarizer Page</div>;
-// const Settings = () => <div className="p-6">Settings Page</div>;
 
 function App() {
   return (
@@ -16,8 +14,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/assistant" element={<Assistant />} />
         <Route path="/chatroom" element={<Chatroom />} />
-        {/* <Route path="/summarize" element={<Summarize />} />
-        <Route path="/settings" element={<Settings />} /> */}
+        <Route path="/globalchat" element={<GlobalChat />} />{" "}
+        {/* ✅ New Global Chat Route */}
+        {/* <Route path="/summarize" element={<Summarize />} /> */}
+        {/* <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </Router>
   );

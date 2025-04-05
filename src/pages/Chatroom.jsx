@@ -11,6 +11,7 @@ const Chatroom = () => {
   const [room, setRoom] = useState("");
   const [joined, setJoined] = useState(false);
   const [isListening, setIsListening] = useState(false);
+  const [indianVoice, setIndianVoice] = useState(null);
 
   const recognition = new window.webkitSpeechRecognition();
   recognition.lang = "en-US";
@@ -19,6 +20,7 @@ const Chatroom = () => {
   const speak = (text) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = indianVoice || null; // Use Indian voice if available
     synth.speak(utterance);
   };
 
@@ -40,6 +42,27 @@ const Chatroom = () => {
   };
 
   useEffect(() => {
+    // Load available voices and pick an Indian one
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices();
+      const selectedVoice =
+        voices.find(
+          (v) =>
+            v.lang === "en-IN" ||
+            v.name.toLowerCase().includes("india") ||
+            v.name.toLowerCase().includes("hindi")
+        ) || voices[0];
+      setIndianVoice(selectedVoice);
+    };
+
+    // Ensure voices are available before setting
+    if (typeof window !== "undefined" && window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+    }
+  }, []);
+
+  useEffect(() => {
     if (!joined) return;
 
     socket.emit("joinRoom", room);
@@ -54,7 +77,7 @@ const Chatroom = () => {
     return () => {
       socket.off("chat message");
     };
-  }, [joined]);
+  }, [joined, indianVoice]);
 
   const sendMessage = (messageText) => {
     const msg = messageText || input;

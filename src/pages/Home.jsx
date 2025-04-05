@@ -23,7 +23,13 @@ const Home = () => {
           to="/chatroom"
           className="bg-green-600 text-white px-6 py-4 rounded-xl shadow hover:bg-green-700 transition"
         >
-          💬 Community Chatroom
+          💬 Private Chatroom
+        </Link>
+        <Link
+          to="/globalchat"
+          className="bg-teal-600 text-white px-6 py-4 rounded-xl shadow hover:bg-teal-700 transition"
+        >
+          🌐 Global Chatroom
         </Link>
         <Link
           to="/summarize"
@@ -35,7 +41,7 @@ const Home = () => {
           to="/settings"
           className="bg-gray-800 text-white px-6 py-4 rounded-xl shadow hover:bg-gray-900 transition"
         >
-          ⚙️ Accessibility Settings
+          ⚙️ Offline Chatroom
         </Link>
       </div>
     </div>
