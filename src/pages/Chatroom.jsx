@@ -65,7 +65,7 @@ const Chatroom = () => {
   useEffect(() => {
     if (!joined) return;
 
-    socket.emit("joinRoom", room);
+    socket.emit("join room", room);
 
     socket.on("chat message", (msg) => {
       setMessages((prev) => [...prev, msg]);

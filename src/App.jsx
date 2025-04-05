@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Assistant from "./pages/Assistant";
 import Chatroom from "./pages/Chatroom";
 import GlobalChat from "./pages/GlobalChat"; // ✅ New import
-// import Summarize from "./pages/Summarize"; // ✅ Uncomment if implemented
+import Summarizer from "./pages/Summarizer"; /// ✅ Uncomment if implemented
 // import Settings from "./pages/Settings"; // ✅ Uncomment if implemented
 import React from "react";
 
@@ -14,9 +14,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/assistant" element={<Assistant />} />
         <Route path="/chatroom" element={<Chatroom />} />
-        <Route path="/globalchat" element={<GlobalChat />} />{" "}
+        <Route path="/globalchat" element={<GlobalChat />} />
         {/* ✅ New Global Chat Route */}
-        {/* <Route path="/summarize" element={<Summarize />} /> */}
+        <Route path="/summarize" element={<Summarizer />} />
         {/* <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </Router>
